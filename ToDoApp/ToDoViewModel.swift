@@ -20,6 +20,16 @@ class ToDoViewModel: ObservableObject {
         loadTasks()
     }
     
+    //Number of completed tasks
+    var completedTasks: Int {
+        tasks.filter { $0.isCompleted }.count
+    }
+
+    //Progress on completed tasks as a percentage
+    var progress: Double {
+        tasks.isEmpty ? 0.0 : Double(completedTasks) / Double(tasks.count)
+    }
+    
     //Function to add tasks.
     func addTask(title: String){
         let newTask = ToDoItem(title: title)

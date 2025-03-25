@@ -46,9 +46,33 @@ struct ContentView: View {
                     .listStyle(PlainListStyle())
                     .background(Color.clear)
             }
-            .padding()
+            
+            Spacer()
+                
         }
         .navigationTitle("To-Do List")
+
+        .overlay(
+            VStack {
+                Spacer()
+                
+                VStack {
+                    ProgressView(value: viewModel.progress)
+                        .progressViewStyle(LinearProgressViewStyle())
+                        .tint(.green)
+                        .frame(width: 200)
+                    
+                    Text("\(viewModel.completedTasks) / \(viewModel.tasks.count) Tasks Completed")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.white.shadow(radius: 1))
+            }
+            .edgesIgnoringSafeArea(.bottom),
+            alignment: .bottom
+        )
     }
 }
     private func addTask(){
