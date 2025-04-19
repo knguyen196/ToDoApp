@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3757080C2D8E3F940060E1F1 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3757080B2D8E3F940060E1F1 /* ToDoItem.swift */; };
+		3728C3A92DB3521E00448721 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728C3A82DB3521E00448721 /* ToDoItem.swift */; };
+		3728C3AB2DB352C000448721 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728C3AA2DB352C000448721 /* StarView.swift */; };
 		3757080E2D8E402D0060E1F1 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3757080D2D8E402D0060E1F1 /* ToDoViewModel.swift */; };
 		376409332D8E3E5E005A1D73 /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376409322D8E3E5E005A1D73 /* ToDoAppApp.swift */; };
 		376409352D8E3E5E005A1D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376409342D8E3E5E005A1D73 /* ContentView.swift */; };
@@ -16,7 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3757080B2D8E3F940060E1F1 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		3728C3A82DB3521E00448721 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		3728C3AA2DB352C000448721 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		3757080D2D8E402D0060E1F1 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
 		3764092F2D8E3E5E005A1D73 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		376409322D8E3E5E005A1D73 /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
@@ -57,8 +59,9 @@
 			children = (
 				376409322D8E3E5E005A1D73 /* ToDoAppApp.swift */,
 				376409342D8E3E5E005A1D73 /* ContentView.swift */,
-				3757080B2D8E3F940060E1F1 /* ToDoItem.swift */,
+				3728C3A82DB3521E00448721 /* ToDoItem.swift */,
 				3757080D2D8E402D0060E1F1 /* ToDoViewModel.swift */,
+				3728C3AA2DB352C000448721 /* StarView.swift */,
 				376409362D8E3E62005A1D73 /* Assets.xcassets */,
 				376409382D8E3E62005A1D73 /* Preview Content */,
 			);
@@ -145,8 +148,9 @@
 			files = (
 				3757080E2D8E402D0060E1F1 /* ToDoViewModel.swift in Sources */,
 				376409352D8E3E5E005A1D73 /* ContentView.swift in Sources */,
+				3728C3A92DB3521E00448721 /* ToDoItem.swift in Sources */,
+				3728C3AB2DB352C000448721 /* StarView.swift in Sources */,
 				376409332D8E3E5E005A1D73 /* ToDoAppApp.swift in Sources */,
-				3757080C2D8E3F940060E1F1 /* ToDoItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +284,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = XVBAFANGCL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -308,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = XVBAFANGCL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

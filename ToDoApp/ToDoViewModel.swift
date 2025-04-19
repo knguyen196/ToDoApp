@@ -8,11 +8,7 @@
 import Foundation
 
 class ToDoViewModel: ObservableObject {
-    @Published var tasks: [ToDoItem] = [] {
-        didSet{
-            saveTasks()
-        }
-    }
+    @Published var tasks: [ToDoItem] = []
     
     private let saveKey = "Tasks"
     
@@ -31,9 +27,19 @@ class ToDoViewModel: ObservableObject {
     }
     
     //Function to add tasks.
-    func addTask(title: String){
-        let newTask = ToDoItem(title: title)
+    func addTask(title: String, priority: Int){
+        let newTask = ToDoItem(title: title, isCompleted: false, priority: priority)
         tasks.append(newTask)
+        tasks.sort {$0.priority > $1.priority}
+        saveTasks()
+    }
+    
+    func updatePriority(for task: ToDoItem, to newPriority: Int){
+        if let index = tasks.firstIndex(where: { $0.id == task.id}){
+            tasks[index].priority = newPriority
+            tasks.sort {$0.priority > $1.priority}
+            saveTasks()
+        }
     }
     
     //Function to toggle completed task

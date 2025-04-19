@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ToDoViewModel()
     @State private var newTaskTitle = ""
+    @State private var newTaskPriority = 1
     
     var body: some View{
         NavigationView{
@@ -20,7 +21,16 @@ struct ContentView: View {
             VStack{
                 HStack{
                     TextField("New task", text: $newTaskTitle)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .foregroundColor(Color.black)
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .shadow(radius:1)
+                    
+                    StarView(currentRating: newTaskPriority){ rating in
+                        newTaskPriority = rating
+                        }
+                    
                     Button(action: addTask) {
                         Image(systemName: "plus.circle.fill")
                             .font(.title)
@@ -32,17 +42,35 @@ struct ContentView: View {
                 
                 List {
                     ForEach(viewModel.tasks) { task in
-                        HStack{
-                            Button(action: {viewModel.toggleTaskComplete(task) }) {
+                        HStack {
+                            Button(action: { viewModel.toggleTaskComplete(task) }) {
                                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                     .foregroundColor(task.isCompleted ? .green : .gray)
                             }
-                            Text(task.title)
-                                .strikethrough(task.isCompleted)
+
+                            VStack(alignment: .leading) {
+                                Text(task.title)
+                                    .foregroundColor(Color.black)
+                                    .strikethrough(task.isCompleted)
+
+                                StarView(currentRating: task.priority) { newRating in
+                                    viewModel.updatePriority(for: task, to: newRating)
+                                }
+                            }
+
+                            Spacer()
                         }
+                        .padding(8)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                        .listRowInsets(EdgeInsets()) // removes default List padding
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                     }
-                        .onDelete(perform: viewModel.deleteTask)
+                    .onDelete(perform: viewModel.deleteTask)
                 }
+
                     .listStyle(PlainListStyle())
                     .background(Color.clear)
             }
@@ -76,8 +104,9 @@ struct ContentView: View {
     }
 }
     private func addTask(){
-        viewModel.addTask(title: newTaskTitle)
+        viewModel.addTask(title: newTaskTitle, priority: newTaskPriority)
         newTaskTitle = ""
+        newTaskPriority = 1
     }
 }
 
