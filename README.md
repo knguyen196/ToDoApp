@@ -1,2 +1,2 @@
 # To Do App
-This app will make it easier to maintain a todo list
+This app is an easy to maintain TODO list.
