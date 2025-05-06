@@ -11,16 +11,7 @@ import SwiftUI
 struct ToDoAppApp: App {
     var body: some Scene {
         WindowGroup {
-            TabbedContentView()
+            LoginView()
         }
     }
 }
-
-//@main
-//struct ToDoAppApp: App {
-//    var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }
-//    }
-//}
