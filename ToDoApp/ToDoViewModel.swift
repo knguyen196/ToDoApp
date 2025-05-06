@@ -10,9 +10,10 @@ import Foundation
 class ToDoViewModel: ObservableObject {
     @Published var tasks: [ToDoItem] = []
     
-    private let saveKey = "Tasks"
+    private var saveKey: String
     
-    init() {
+    init(category: String) {
+        self.saveKey = "Tasks_\(category)"
         loadTasks()
     }
     
@@ -20,7 +21,7 @@ class ToDoViewModel: ObservableObject {
     var completedTasks: Int {
         tasks.filter { $0.isCompleted }.count
     }
-
+    
     //Progress on completed tasks as a percentage
     var progress: Double {
         tasks.isEmpty ? 0.0 : Double(completedTasks) / Double(tasks.count)
