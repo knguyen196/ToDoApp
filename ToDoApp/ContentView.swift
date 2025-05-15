@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var isShowingMap = false
     @State private var newTaskTitle = ""
     @State private var newTaskPriority = 1
-
+    
     init(viewModel: ToDoViewModel = ToDoViewModel(date: Date())) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -59,7 +59,7 @@ struct ContentView: View {
                     
                     List {
                         ForEach(viewModel.tasks) { task in
-                            HStack {
+                            HStack(alignment: .top) {
                                 Button(action: { viewModel.toggleTaskComplete(task) }) {
                                     Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                         .foregroundColor(task.isCompleted ? .green : .gray)
@@ -67,7 +67,7 @@ struct ContentView: View {
                                 
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(task.title)
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(.black)
                                         .strikethrough(task.isCompleted)
                                     
                                     StarView(currentRating: task.priority) { newRating in
@@ -80,8 +80,19 @@ struct ContentView: View {
                                         Text(String(format: "%.1f miles away", distanceInMiles))
                                             .font(.caption)
                                             .foregroundColor(.gray)
+                                    }
+                                    
+                                    if let lat = task.latitude, let lon = task.longitude {
+                                        Button(action: {
+                                            let url = URL(string: "http://maps.apple.com/?ll=\(lat),\(lon)")!
+                                            UIApplication.shared.open(url)
+                                        }) {
+                                            Label("View in Maps", systemImage: "map")
+                                                .font(.caption)
+                                                .foregroundColor(.blue)
+                                        }
                                     } else {
-                                        Text("No distance info")
+                                        Text("No location set")
                                             .font(.caption)
                                             .foregroundColor(.red)
                                     }
@@ -93,10 +104,11 @@ struct ContentView: View {
                             .background(Color.white)
                             .cornerRadius(10)
                             .shadow(radius: 1)
-                            .listRowInsets(EdgeInsets()) // removes default List padding
+                            .listRowInsets(EdgeInsets())
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                         }
+                        
                         .onDelete(perform: viewModel.deleteTask)
                     }
                     
@@ -107,7 +119,7 @@ struct ContentView: View {
                 Spacer()
                 
             }
-            // .navigationTitle("To-Do")
+            // .navigationTitle("Someday")
             
             .overlay(
                 VStack {

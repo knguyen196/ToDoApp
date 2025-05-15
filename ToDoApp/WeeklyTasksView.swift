@@ -18,6 +18,7 @@ struct WeeklyTasksView: View {
     
     var body: some View {
         VStack {
+            Text("Weekly").font(.headline)
             HStack {
                 Button(action: goToPreviousWeek) {
                     Image(systemName: "chevron.left")
@@ -37,6 +38,8 @@ struct WeeklyTasksView: View {
         .onAppear {
             viewModel.updateDate(to: selectedWeek)
         }
+        .navigationTitle("Weekly")
+
     }
     
     private func goToPreviousWeek() {

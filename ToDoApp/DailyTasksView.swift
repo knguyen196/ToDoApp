@@ -18,6 +18,7 @@ struct DailyTasksView: View {
     
     var body: some View {
         VStack {
+            Text("Daily").font(.headline)
             HStack {
                 Button(action: goToPreviousDay) {
                     Image(systemName: "chevron.left")
@@ -34,6 +35,7 @@ struct DailyTasksView: View {
             ContentView(viewModel: viewModel)
             Spacer()
         }
+        .navigationTitle("Daily")
     }
     
     private func goToPreviousDay() {
