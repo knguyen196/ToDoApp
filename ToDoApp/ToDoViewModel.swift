@@ -56,8 +56,8 @@ class ToDoViewModel: ObservableObject {
         tasks.isEmpty ? 0.0 : Double(completedTasks) / Double(tasks.count)
     }
     
-    func addTask(title: String, priority: Int){
-        let newTask = ToDoItem(title: title, isCompleted: false, priority: priority)
+    func addTask(title: String, priority: Int, latitude: Double? = nil, longitude: Double? = nil){
+        let newTask = ToDoItem(title: title, isCompleted: false, priority: priority, latitude: latitude, longitude: longitude)
         tasks.append(newTask)
         tasks.sort {$0.priority > $1.priority}
         saveTasks()

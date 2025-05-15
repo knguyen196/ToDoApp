@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @StateObject var viewModel: ToDoViewModel
+    @StateObject private var locationManager = LocationManager()
+    @State private var selectedLocation: CLLocation?
+    @State private var isShowingMap = false
     @State private var newTaskTitle = ""
     @State private var newTaskPriority = 1
 
@@ -35,6 +39,15 @@ struct ContentView: View {
                             newTaskPriority = rating
                         }
                         
+                        Button(action: {
+                            isShowingMap = true
+                        }) {
+                            Image(systemName: selectedLocation == nil ? "mappin.and.ellipse" : "mappin.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(.red)
+                                .padding(.leading, 5)
+                        }
+                        
                         Button(action: addTask) {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title)
@@ -52,13 +65,25 @@ struct ContentView: View {
                                         .foregroundColor(task.isCompleted ? .green : .gray)
                                 }
                                 
-                                VStack(alignment: .leading) {
+                                VStack(alignment: .leading, spacing: 4) {
                                     Text(task.title)
                                         .foregroundColor(Color.black)
                                         .strikethrough(task.isCompleted)
                                     
                                     StarView(currentRating: task.priority) { newRating in
                                         viewModel.updatePriority(for: task, to: newRating)
+                                    }
+                                    
+                                    if let taskLoc = task.location,
+                                       let userLoc = locationManager.currentLocation {
+                                        let distanceInMiles = userLoc.distance(from: taskLoc) / 1609.344
+                                        Text(String(format: "%.1f miles away", distanceInMiles))
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    } else {
+                                        Text("No distance info")
+                                            .font(.caption)
+                                            .foregroundColor(.red)
                                     }
                                 }
                                 
@@ -107,11 +132,19 @@ struct ContentView: View {
                 alignment: .bottom
             )
         }
+        .sheet(isPresented: $isShowingMap) {
+            MapPickerView(
+                selectedLocation: $selectedLocation,
+                userLocation: locationManager.currentLocation?.coordinate
+            )
+        }
     }
     private func addTask(){
-        viewModel.addTask(title: newTaskTitle, priority: newTaskPriority)
+        print("Adding task: \(newTaskTitle), location: \(selectedLocation?.coordinate.latitude ?? 0), \(selectedLocation?.coordinate.longitude ?? 0)")
+        viewModel.addTask(title: newTaskTitle, priority: newTaskPriority, latitude: selectedLocation?.coordinate.latitude, longitude: selectedLocation?.coordinate.longitude)
         newTaskTitle = ""
         newTaskPriority = 1
+        selectedLocation = nil
     }
 }
 
