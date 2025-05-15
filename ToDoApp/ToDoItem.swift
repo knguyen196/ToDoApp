@@ -19,7 +19,9 @@ struct ToDoItem: Identifiable, Codable {
     
     var location: CLLocation? {
         if let lat = latitude, let lon = longitude {
-            return CLLocation(latitude: lat, longitude: lon)
+            var myLocation = CLLocation(latitude: lat, longitude: lon)
+            print(myLocation)
+            return myLocation
         }
         return nil
     }
