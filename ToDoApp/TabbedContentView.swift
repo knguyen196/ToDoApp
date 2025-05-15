@@ -10,17 +10,17 @@ import SwiftUI
 struct TabbedContentView: View {
     var body: some View {
         TabView {
-            ContentView(viewModel: ToDoViewModel(category: "Daily"))
+            DailyTasksView()
                 .tabItem {
-                    Label("Daily", systemImage: "calendar.badge.exclamationmark")
+                    Label("Daily", systemImage: "calendar")
                 }
             
-            ContentView(viewModel: ToDoViewModel(category: "Weekly"))
+            ContentView(viewModel: ToDoViewModel(date: Date())) // Placeholder; you may want separate weekly model
                 .tabItem {
                     Label("Weekly", systemImage: "calendar.badge.clock")
                 }
-            
-            ContentView(viewModel: ToDoViewModel(category: "Someday"))
+
+            ContentView(viewModel: ToDoViewModel(date: Date())) // Placeholder; you may want separate someday model
                 .tabItem {
                     Label("Someday", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                 }

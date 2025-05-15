@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var newTaskTitle = ""
     @State private var newTaskPriority = 1
 
-    init(viewModel: ToDoViewModel = ToDoViewModel(category: "Daily")) {
+    init(viewModel: ToDoViewModel = ToDoViewModel(date: Date())) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -82,7 +82,7 @@ struct ContentView: View {
                 Spacer()
                 
             }
-            .navigationTitle("To-Do")
+            // .navigationTitle("To-Do")
             
             .overlay(
                 VStack {
