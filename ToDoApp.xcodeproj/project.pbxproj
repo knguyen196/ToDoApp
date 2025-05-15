@@ -19,6 +19,7 @@
 		7ABABF7C2DCA8B1C000F4A74 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABABF7B2DCA8AFA000F4A74 /* SignUpView.swift */; };
 		F28330D42DC99246007A2CD3 /* TabbedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28330D32DC9923D007A2CD3 /* TabbedContentView.swift */; };
 		F2D0057A2DD566BE00168EA5 /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D005792DD566B800168EA5 /* DailyTasksView.swift */; };
+		F2D0057C2DD571F200168EA5 /* WeeklyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D0057B2DD571ED00168EA5 /* WeeklyTasksView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F28330D02DC95AD5007A2CD3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F28330D32DC9923D007A2CD3 /* TabbedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedContentView.swift; sourceTree = "<group>"; };
 		F2D005792DD566B800168EA5 /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
+		F2D0057B2DD571ED00168EA5 /* WeeklyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTasksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				3728C3A82DB3521E00448721 /* ToDoItem.swift */,
 				3757080D2D8E402D0060E1F1 /* ToDoViewModel.swift */,
 				F2D005792DD566B800168EA5 /* DailyTasksView.swift */,
+				F2D0057B2DD571ED00168EA5 /* WeeklyTasksView.swift */,
 				3728C3AA2DB352C000448721 /* StarView.swift */,
 				376409362D8E3E62005A1D73 /* Assets.xcassets */,
 				376409382D8E3E62005A1D73 /* Preview Content */,
@@ -168,6 +171,7 @@
 				3757080E2D8E402D0060E1F1 /* ToDoViewModel.swift in Sources */,
 				376409352D8E3E5E005A1D73 /* ContentView.swift in Sources */,
 				3728C3A92DB3521E00448721 /* ToDoItem.swift in Sources */,
+				F2D0057C2DD571F200168EA5 /* WeeklyTasksView.swift in Sources */,
 				3728C3AB2DB352C000448721 /* StarView.swift in Sources */,
 				376409332D8E3E5E005A1D73 /* ToDoAppApp.swift in Sources */,
 				7ABABF7A2DCA8ACF000F4A74 /* LoginView.swift in Sources */,

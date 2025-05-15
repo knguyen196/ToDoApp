@@ -8,15 +8,32 @@
 import Foundation
 
 class ToDoViewModel: ObservableObject {
+    enum Mode {
+        case daily
+        case weekly
+    }
+    
     @Published var tasks: [ToDoItem] = []
     
     private var saveKey: String
     private var currentDate: Date
+    private let mode: Mode
     
-    init(date: Date) {
+    init(date: Date, mode: Mode = .daily) {
         self.currentDate = date
-        self.saveKey = "Tasks_Daily_\(Self.dateFormatter.string(from: date))"
+        self.mode = mode
+        self.saveKey = ToDoViewModel.makeSaveKey(for: date, mode: mode)
         loadTasks()
+    }
+    
+    static func makeSaveKey(for date: Date, mode: Mode) -> String {
+        switch mode {
+        case .daily:
+            return "Tasks_Daily_\(dateFormatter.string(from: date))"
+        case .weekly:
+            let startOfWeek = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date))!
+            return "Tasks_Weekly_\(dateFormatter.string(from: startOfWeek))"
+        }
     }
     
     static let dateFormatter: DateFormatter = {
@@ -27,7 +44,7 @@ class ToDoViewModel: ObservableObject {
     
     func updateDate(to newDate: Date) {
         self.currentDate = newDate
-        self.saveKey = "Tasks_Daily_\(Self.dateFormatter.string(from: newDate))"
+        self.saveKey = Self.makeSaveKey(for: newDate, mode: mode)
         loadTasks()
     }
     

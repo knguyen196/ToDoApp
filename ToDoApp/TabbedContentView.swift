@@ -15,12 +15,12 @@ struct TabbedContentView: View {
                     Label("Daily", systemImage: "calendar")
                 }
             
-            ContentView(viewModel: ToDoViewModel(date: Date())) // Placeholder; you may want separate weekly model
+            WeeklyTasksView()
                 .tabItem {
                     Label("Weekly", systemImage: "calendar.badge.clock")
                 }
-
-            ContentView(viewModel: ToDoViewModel(date: Date())) // Placeholder; you may want separate someday model
+            
+            ContentView(viewModel: ToDoViewModel(date: Date()))
                 .tabItem {
                     Label("Someday", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                 }
